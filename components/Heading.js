@@ -4,13 +4,15 @@ import styles from "./heading.module.scss"
 let cx = classNames.bind(styles)
  //binding classes lets you make the children and if statements work together
 
-const Heading = ({ children, level }) => {
+const Heading = ({ children, level, marginBottom }) => {
     // console.log (props) 
     let headingClasses = cx({
         heading : true,
+        [`margin-bottom-${marginBottom}`] : marginBottom,
         heading1 : level === "1",
         heading2 : level === "2",
-        heading3 : level === "3"
+        heading3 : level === "3",
+        heading4 : level === "4",
     });
     //console.log({headingClasses});
 
@@ -20,6 +22,8 @@ const Heading = ({ children, level }) => {
         return <h2 className={headingClasses}>{children}</h2>   
     } else if (level === "3") {
         return <h3 className={headingClasses}>{children}</h3>   
+    } else if (level === "4") {
+        return <h4 className={headingClasses}>{children}</h4>   
     } else {
         return <p>The heading component requires the level prop.</p>  
     }   

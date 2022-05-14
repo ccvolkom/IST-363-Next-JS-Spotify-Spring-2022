@@ -4,14 +4,13 @@ import Tabs from './Tabs'
 import Tracks from './Tracks'
 
 import { 
-	getTracks, 
-	getGenres,
-	filterTracksByGenre 
+    getTracks, getGenres, filterTracksByGenre 
 } from '../lib/api'
 
 
-const TracksByGenre = ({ tracks, genres }) => {
-	const[activeGenre, setActiveGenre] = useState("Rock");
+const TracksByGenre = ({ items }) => {
+    const[activeGenre, setActiveGenre] = useState("Rock");
+    const genres = getGenres();
 
     return <div>
         <h2>Top Songs By Genre</h2>
@@ -20,7 +19,7 @@ const TracksByGenre = ({ tracks, genres }) => {
             activeItem={activeGenre}
             clickHandler={setActiveGenre}
         />
-        <Tracks items={filterTracksByGenre(tracks, activeGenre)} />
+        <Tracks items={filterTracksByGenre(items, activeGenre)} />
     
     </div>
 }
